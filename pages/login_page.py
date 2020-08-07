@@ -9,14 +9,14 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
 
-    def register_new_user(self):
+    def register_new_user(self,email,password):
         name = self.browser.find_element(*LoginPageLocators.REGISTRATION_USERNAME_FIELD)
-        password = self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD_FIELD)
+        password1 = self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD_FIELD)
         confirm = self.browser.find_element(*LoginPageLocators.CONFIRM_PASSWORD_FIELD)
         button = self.browser.find_element(*LoginPageLocators.REGISTER_BUTTON)
-        password.send_keys("Towelie1997")
-        confirm.send_keys("Towelie1997")
-        name.send_keys("absolutelole@fakemail.org")
+        password1.send_keys(password)
+        confirm.send_keys(password)
+        name.send_keys(email)
         button.click()
 
     def should_be_logined(self):
